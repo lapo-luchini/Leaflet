@@ -15,6 +15,7 @@ var deps = {
 		      'geo/projection/Projection.SphericalMercator.js',
 		      'geo/projection/Projection.LonLat.js',
 		      'geo/crs/CRS.js',
+		      'geo/crs/CRS.Simple.js',
 		      'geo/crs/CRS.EPSG3857.js',
 		      'geo/crs/CRS.EPSG4326.js',
 		      'map/Map.js'],
@@ -58,7 +59,9 @@ var deps = {
 	},
 
 	Marker: {
-		src: ['layer/marker/Icon.js', 'layer/marker/Icon.Default.js', 'layer/marker/Marker.js'],
+		src: ['layer/marker/Icon.js',
+		      'layer/marker/Icon.Default.js',
+		      'layer/marker/Marker.js'],
 		desc: 'Markers to put on the map.'
 	},
 
@@ -69,7 +72,9 @@ var deps = {
 	},
 
 	Popup: {
-		src: ['layer/Popup.js', 'layer/marker/Marker.Popup.js', 'map/ext/Map.Popup.js'],
+		src: ['layer/Popup.js',
+		      'layer/marker/Marker.Popup.js',
+		      'map/ext/Map.Popup.js'],
 		deps: ['Marker'],
 		desc: 'Used to display the map popup (used mostly for binding HTML data to markers and paths on click).'
 	},
@@ -87,7 +92,9 @@ var deps = {
 
 
 	Path: {
-		src: ['layer/vector/Path.js', 'layer/vector/Path.SVG.js', 'layer/vector/Path.Popup.js'],
+		src: ['layer/vector/Path.js',
+		      'layer/vector/Path.SVG.js',
+		      'layer/vector/Path.Popup.js'],
 		desc: 'Vector rendering core (SVG-powered), enables overlaying the map with SVG paths.',
 		heading: 'Vector layers'
 	},
@@ -104,13 +111,15 @@ var deps = {
 	},
 
 	Polyline: {
-		src: ['geometry/LineUtil.js', 'layer/vector/Polyline.js'],
+		src: ['geometry/LineUtil.js',
+		      'layer/vector/Polyline.js'],
 		deps: ['Path'],
 		desc: 'Polyline overlays.'
 	},
 
 	Polygon: {
-		src: ['geometry/PolyUtil.js', 'layer/vector/Polygon.js'],
+		src: ['geometry/PolyUtil.js',
+		      'layer/vector/Polygon.js'],
 		deps: ['Polyline'],
 		desc: 'Polygon overlays.'
 	},
@@ -174,10 +183,11 @@ var deps = {
 	TouchZoom: {
 		src: ['dom/DomEvent.js',
 		      'dom/DomEvent.DoubleTap.js',
+		      'dom/DomEvent.MsTouch.js',
 		      'core/Handler.js',
 		      'map/handler/Map.TouchZoom.js'],
 		deps: ['MapAnimationZoom'],
-		desc: 'Enables smooth touch zooming on iOS and double tap on iOS/Android.'
+		desc: 'Enables smooth touch zooming on iOS and IE10 and double tap on iOS/IE10/Android.'
 	},
 
 	BoxZoom: {
