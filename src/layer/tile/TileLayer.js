@@ -343,8 +343,6 @@ L.TileLayer = L.Class.extend({
 
 			if (!this.options.bounds.intersects(bounds)) {
 				return false;
-			} else if (tilePoint.x < 0 || tilePoint.y < 0) {
-			    console.log('Loading: ' + tilePoint.x + ':' + tilePoint.y);
 			}
 		}
 
