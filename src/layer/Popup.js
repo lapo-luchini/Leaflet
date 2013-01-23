@@ -243,17 +243,17 @@ L.Popup = L.Class.extend({
 		    dx = 0,
 		    dy = 0;
 
-		if (containerPos.x < 0) {
-			dx = containerPos.x - padding.x;
-		}
 		if (containerPos.x + containerWidth > size.x) {
 			dx = containerPos.x + containerWidth - size.x + padding.x;
 		}
-		if (containerPos.y < 0) {
-			dy = containerPos.y - padding.y;
+		if (containerPos.x - dx < 0) {
+			dx = containerPos.x - padding.x;
 		}
 		if (containerPos.y + containerHeight > size.y) {
 			dy = containerPos.y + containerHeight - size.y + padding.y;
+		}
+		if (containerPos.y - dy < 0) {
+			dy = containerPos.y - padding.y;
 		}
 
 		if (dx || dy) {

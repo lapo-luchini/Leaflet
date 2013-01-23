@@ -18,6 +18,7 @@ var deps = {
 		      'geo/crs/CRS.Simple.js',
 		      'geo/crs/CRS.EPSG3857.js',
 		      'geo/crs/CRS.EPSG4326.js',
+		      'geo/crs/CRS.Simple.js',
 		      'map/Map.js'],
 		desc: 'The core of the library, including OOP, events, DOM facilities, basic units, projections (EPSG:3857 and EPSG:4326) and the base Map class.'
 	},
@@ -28,11 +29,6 @@ var deps = {
 		      'geo/crs/CRS.EPSG3395.js'],
 		desc: 'EPSG:3395 projection (used by some map providers).',
 		heading: 'Additional projections'
-	},
-
-	CRSSimple: {
-		src: ['geo/crs/CRS.Simple.js'],
-		desc: 'Simple projection that might be useful for maps of flat surfaces (e.g. game maps).'
 	},
 
 	TileLayer: {
