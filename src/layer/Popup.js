@@ -18,7 +18,8 @@ L.Popup = L.Class.extend({
 		offset: new L.Point(0, 6),
 		autoPanPadding: new L.Point(5, 5),
 		className: '',
-		zoomAnimation: true
+		zoomAnimation: true,
+		withTip: true
 	},
 
 	initialize: function (options, source) {
@@ -137,8 +138,10 @@ L.Popup = L.Class.extend({
 		this._contentNode = L.DomUtil.create('div', prefix + '-content', wrapper);
 		L.DomEvent.on(this._contentNode, 'mousewheel', L.DomEvent.stopPropagation);
 
-		this._tipContainer = L.DomUtil.create('div', prefix + '-tip-container', container);
-		this._tip = L.DomUtil.create('div', prefix + '-tip', this._tipContainer);
+		if (this.options.withTip) {
+			this._tipContainer = L.DomUtil.create('div', prefix + '-tip-container', container);
+			this._tip = L.DomUtil.create('div', prefix + '-tip', this._tipContainer);
+		}
 	},
 
 	_update: function () {
