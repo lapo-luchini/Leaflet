@@ -98,3 +98,22 @@ L.Mixin.Events = {
 L.Mixin.Events.on = L.Mixin.Events.addEventListener;
 L.Mixin.Events.off = L.Mixin.Events.removeEventListener;
 L.Mixin.Events.fire = L.Mixin.Events.fireEvent;
+
+//TODO: remove after upgrading to LeafletJS 0.7+
+L.Mixin.Events.once = function (types, fn, context) { 
+	if (typeof types === 'object') {
+		for (var type in types) {
+			this.once(type, types[type], fn);
+		}
+		return this;
+	}
+	var handler = L.bind(function () {
+		this
+			.off(types, fn, context)
+			.off(types, handler, context);
+	}, this);
+	// add a listener that's executed once and removed after that
+	return this
+		.on(types, fn, context)
+		.on(types, handler, context);
+};
