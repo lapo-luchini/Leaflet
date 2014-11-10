@@ -1,7 +1,7 @@
 exports.config = {
 	"browser": true,
 	"node": true,
-	"predef": ["L"],
+	"predef": [],
 
 	"debug": false,
 	"devel": false,
@@ -18,7 +18,7 @@ exports.config = {
 	"eqnull": false,
 	"evil": false,
 	"expr": false,
-	"forin": true,
+	"forin": false,
 	"immed": true,
 	"latedef": true,
 	"loopfunc": false,
