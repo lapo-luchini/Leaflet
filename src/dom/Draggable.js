@@ -99,7 +99,7 @@ L.Draggable = L.Class.extend({
 		    newPoint = new L.Point(first.clientX, first.clientY),
 		    diffVec = newPoint.subtract(this._startPoint);
 
-		if (!diffVec.x && !diffVec.y) { return; }
+		if ((diffVec.x * diffVec.x + diffVec.y * diffVec.y) < 25) { return; }
 
 		L.DomEvent.preventDefault(e);
 
