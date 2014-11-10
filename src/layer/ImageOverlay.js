@@ -96,11 +96,11 @@ L.ImageOverlay = L.Class.extend({
 		var map = this._map,
 		    image = this._image,
 		    scale = map.getZoomScale(e.zoom),
-		    nw = this._bounds.getNorthWest(),
-		    se = this._bounds.getSouthEast(),
-
-		    topLeft = map._latLngToNewLayerPoint(nw, e.zoom, e.center),
-		    size = map._latLngToNewLayerPoint(se, e.zoom, e.center)._subtract(topLeft),
+		    b = L.bounds(
+		            map._latLngToNewLayerPoint(this._bounds.getNorthWest(), e.zoom, e.center),
+		            map._latLngToNewLayerPoint(this._bounds.getSouthEast(), e.zoom, e.center)),
+		    topLeft = b.min,
+		    size = b.getSize(),
 		    origin = topLeft._add(size._multiplyBy((1 / 2) * (1 - 1 / scale)));
 
 		image.style[L.DomUtil.TRANSFORM] =
@@ -109,8 +109,11 @@ L.ImageOverlay = L.Class.extend({
 
 	_reset: function () {
 		var image   = this._image,
-		    topLeft = this._map.latLngToLayerPoint(this._bounds.getNorthWest()),
-		    size = this._map.latLngToLayerPoint(this._bounds.getSouthEast())._subtract(topLeft);
+                    b = L.bounds(
+                            this._map.latLngToLayerPoint(this._bounds.getNorthWest()),
+                            this._map.latLngToLayerPoint(this._bounds.getSouthEast())),
+		    topLeft = b.min,
+		    size = b.getSize();
 
 		L.DomUtil.setPosition(image, topLeft);
 
